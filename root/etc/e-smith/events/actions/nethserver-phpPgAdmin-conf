@@ -3,7 +3,7 @@
 password=`perl -e "use NethServer::Password; print NethServer::Password::store('pgadmin');"`
 admin=`sudo -Hiu postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='admin'"`
 if [[ $admin -ne '1' ]];then
-    sudo -Hiu postgres psql -c "CREATE USER admin CREATEDB CREATEUSER ENCRYPTED PASSWORD '$password';"
+    sudo -Hiu postgres psql -c "CREATE USER admin CREATEDB CREATEUSER CREATEROLE ENCRYPTED PASSWORD '$password';"
 #    sudo -Hiu postgres psql -c "CREATE DATABASE mypgdb1 OWNER admin;"
 #    sudo -Hiu postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE mypgdb TO admin;"
 else
