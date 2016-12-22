@@ -6,7 +6,7 @@ for my $event_conf (qw (nethserver-phppgadmin-update))
 {
     event_actions($event_conf, 
              'initialize-default-databases' => '00',
-             'nethserver-phppgadmin-conf' => '02');
+             'nethserver-phpPgAdmin-conf' => '02');
 }
 
 for my $event (qw(
