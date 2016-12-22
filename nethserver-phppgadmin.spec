@@ -21,7 +21,6 @@ Implementation of phpPgAdmin for Nethserver
 %setup
 
 %build
-#mkdir  -p root/var/lib/phpMyAdmin/tmp
 perl createlinks
 
 %install
@@ -29,7 +28,6 @@ perl createlinks
 (cd root   ; /usr/bin/find . -depth -print | /bin/cpio -dump $RPM_BUILD_ROOT)
 %{genfilelist} %{buildroot}   \
    $RPM_BUILD_ROOT > %{name}-%{version}-filelist
-#echo "%doc phpmyadmin.sql" >> %{name}-%{version}-filelist
 
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
