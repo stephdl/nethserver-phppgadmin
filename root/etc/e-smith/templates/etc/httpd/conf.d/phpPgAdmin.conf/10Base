@@ -41,5 +41,5 @@ return "# phpPgAdmin configuration is disabled by its status property"  unless (
     php_admin_value post_max_size $postmaxsize
     php_admin_value upload_max_filesize $uploadmaxsize
     php_admin_value memory_limit $memorylimit
-</Directory>
+</Directory>);
 } 
