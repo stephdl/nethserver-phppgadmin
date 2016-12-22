@@ -1,0 +1,45 @@
+{
+  my $status = $phppgadmin{'status'} || 'disabled';
+ 
+return "# phpPgAdmin configuration is disabled by its status property"  unless ($status eq 'enabled'); 
+
+    $OUT .="#-------------------------------------------------\n";
+    $OUT .="# phpPgAdmin settings from nethserver-phppgadmin\n";
+    $OUT .="#-------------------------------------------------\n";
+    $OUT .="\n";
+ 
+    $OUT .= "Alias /phpPgAdmin /usr/share/phpPgAdmin\n";
+    $OUT .= "Alias /phppgadmin /usr/share/phpPgAdmin\n";
+
+    my $access24 = ($phppgadmin{access} eq "public" ) ? "all granted" : "ip $localAccess" ; 
+    my $access22 = ($phppgadmin{access} eq "public" ) ? "all" : "$localAccess" ;
+
+    $OUT .= qq(
+<Directory /usr/share/phpPgAdmin/>
+    SSLRequireSSL
+    Options -Indexes
+    AllowOverride None
+   <IfModule mod_authz_core.c>
+     # Apache 2.4
+     <RequireAny>
+       Require $access24
+     </RequireAny>
+   </IfModule>
+   <IfModule !mod_authz_core.c>
+     # Apache 2.2
+     Order Deny,Allow
+     Deny from All
+     Allow from $access22
+   </IfModule>);
+
+  my $postmaxsize   = ($phppgadmin{'PostMaxSize'} || '100M');
+  my $uploadmaxsize = ($phppgadmin{'UploadMaxSize'} || '100M');
+  my $memorylimit   = ($phppgadmin{'MemoryLimit'} || '500M');
+
+  $OUT .= qq(
+    Satisfy all
+    php_admin_value post_max_size $postmaxsize
+    php_admin_value upload_max_filesize $uploadmaxsize
+    php_admin_value memory_limit $memorylimit
+</Directory>
+} 

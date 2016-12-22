@@ -1,0 +1,22 @@
+#!/usr/bin/perl -w
+
+use esmith::Build::CreateLinks qw(:all);
+
+for my $event_conf (qw (nethserver-phppgadmin-update))
+{
+    event_actions($event_conf, 
+             'initialize-default-databases' => '00',
+             'nethserver-phppgadmin-conf' => '02');
+}
+
+for my $event (qw(
+    nethserver-phppgadmin-update 
+    nethserver-phppgadmin-save 
+
+    ))
+{
+    templates2events("/etc/httpd/conf.d/phpPgAdmin.conf", $event);
+    templates2events("/etc/phpPgAdmin/config.inc.php", $event);
+    templates2events("/etc/httpd/conf.d/default-virtualhost.inc", $event);
+    event_services($event, qw(httpd reload));
+}
