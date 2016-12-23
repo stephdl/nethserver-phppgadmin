@@ -17,6 +17,6 @@ for my $event (qw(
 {
     templates2events("/etc/httpd/conf.d/phpPgAdmin.conf", $event);
     templates2events("/etc/phpPgAdmin/config.inc.php", $event);
-    templates2events("/etc/httpd/conf.d/default-virtualhost.inc", $event);
+    templates2events("/etc/httpd/conf/httpd.conf", $event);
     event_services($event, qw(httpd reload));
 }

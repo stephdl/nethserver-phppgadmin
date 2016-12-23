@@ -38,5 +38,5 @@ perl createlinks
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Thu Dec 22 2016 stephane de labrusse <stephdl@de-labrusse.fr> - 0.0.1-1.ns7
-- NS7 version
+* Thu Dec 22 2016 stephane de labrusse <stephdl@de-labrusse.fr> - 0.0.1-1.ns6
+- NS6 version
