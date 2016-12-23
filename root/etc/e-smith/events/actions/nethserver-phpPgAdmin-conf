@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 password=`perl -e "use NethServer::Password; print NethServer::Password::store('pgadmin');"`
 admin=`sudo -Hiu postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='admin'"`
