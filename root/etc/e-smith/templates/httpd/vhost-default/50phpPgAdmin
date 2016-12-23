@@ -1,0 +1,7 @@
+#
+# 50phpPgAdmin
+#
+RewriteEngine On
+RewriteCond %\{HTTPS\} !=on
+RewriteRule ^/phppgadmin(/.*)?$ https://%\{HTTP_HOST\}/phppgadmin$1 [L,R=301]
+RewriteRule ^/phpPgAdmin(/.*)?$ https://%\{HTTP_HOST\}/phpPgAdmin$1 [L,R=301]
