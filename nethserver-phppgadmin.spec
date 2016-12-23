@@ -32,8 +32,6 @@ perl createlinks
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
 
-%dir %{_nseventsdir}/%{name}-update
-
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
