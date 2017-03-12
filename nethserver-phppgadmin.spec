@@ -1,7 +1,7 @@
 Summary: phpPgAdmin for Nethserver
 Name: nethserver-phppgadmin
 Version: 0.0.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 URL: http://dev.nethserver.org/projects/nethforge/wiki/%{name}
@@ -31,10 +31,14 @@ perl createlinks
 
 %files -f %{name}-%{version}-filelist
 %defattr(-,root,root)
+%doc COPYING
 
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Mar 12 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.1-2.ns6
+- GPL license
+
 * Thu Dec 22 2016 stephane de labrusse <stephdl@de-labrusse.fr> - 0.0.1-1.ns6
 - NS6 version
