@@ -22,4 +22,5 @@ for my $event (qw(
 }
 
 my $event = 'trusted-networks-modify';
-    templates2events("/etc/httpd/conf.d/phpPgAdmin.conf", $event);
+templates2events("/etc/httpd/conf.d/phpPgAdmin.conf", $event);
+event_services($event, 'httpd' => 'reload');

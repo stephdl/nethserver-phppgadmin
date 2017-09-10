@@ -1,6 +1,6 @@
 Summary: phpPgAdmin for Nethserver
 Name: nethserver-phppgadmin
-Version: 0.0.2
+Version: 0.0.3
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -37,6 +37,9 @@ perl createlinks
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Sun Sep 10 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.3-1.ns6
+- Restart httpd service on trusted-network
+
 * Wed Mar 29 2017 Stephane de Labrusse <stephdl@de-labrusse.fr> - 0.0.2-1.ns6
 - Template expansion on trusted-network
 
