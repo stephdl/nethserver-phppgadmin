@@ -1,0 +1,8 @@
+
+#
+# nsapi_nethserver_phppgadmin
+#
+Cmnd_Alias NSAPI_NETHSERVER_PHPPGADMIN = \
+     /usr/libexec/nethserver/api/nethserver-phppgadmin/read
+
+Defaults!NSAPI_NETHSERVER_PHPPGADMIN !requiretty
