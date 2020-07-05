@@ -1,6 +1,6 @@
 Summary: phpPgAdmin for Nethserver
 Name: nethserver-phppgadmin
-Version: 1.0.1
+Version: 1.0.2
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -48,7 +48,14 @@ cp -a api/* %{buildroot}/usr/libexec/nethserver/api/%{name}/
 %clean 
 rm -rf $RPM_BUILD_ROOT
 
+%postun
+/usr/bin/rm -f /etc/httpd/conf.d/phpPgAdmin.conf
+/usr/bin/systemctl reload httpd
+
 %changelog
+* Sun Jul 05 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.2
+- Remove http templates after rpm removal
+
 * Thu Mar 05 2020  stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.1-1.ns7
 - Fix bad sudoers permission
 
